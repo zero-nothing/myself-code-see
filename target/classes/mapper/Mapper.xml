@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="register.com.dao.UserMapper">
+    <insert id="insertPad" parameterType="register.com.entity.Pad">
+        insert into pad_register(uk_name, idx_cpuid) values (#{name}, #{cpuid})
+    </insert>
+    <select id="getNameByCPUID" parameterType="java.lang.String" resultType="java.lang.String">
+        select uk_name from pad_register where idx_cpuid=#{0}
+    </select>
+    <select id="getNameLast" resultType="java.lang.String">
+        select uk_name from pad_register order by pk_id desc limit 1
+    </select>
+</mapper>
